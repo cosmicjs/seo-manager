@@ -1,0 +1,25 @@
+{
+  "cosmic": {
+    "title": "SEO Manager",
+    "font_awesome_class": "fa-google"
+  },
+  "name": "seo-manager-react",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "0.9.5"
+  },
+  "dependencies": {
+    "async": "^2.3.0",
+    "lodash": "^4.17.4",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "semantic-ui-react": "^0.68.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
