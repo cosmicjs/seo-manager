@@ -226,7 +226,7 @@ class App extends Component {
         </Table>
         {
           data.current_object &&
-          <Modal open={ data.current_object } onClose={ this.closeObjectModal.bind(this) }>
+          <Modal open={ data.current_object ? true : false } onClose={ this.closeObjectModal.bind(this) }>
             <Modal.Header>Object Content</Modal.Header>
             <Modal.Content>
               <Modal.Description>
