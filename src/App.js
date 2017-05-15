@@ -19,8 +19,15 @@ class App extends Component {
     fetch(endpoint).then(response => {
       return response.json()
     }).then(response => {
-      const objects = response.objects
       const data = this.state.data
+      if (response.error) {
+        data.error = true
+        this.setState({
+          data
+        })
+        return 
+      }
+      const objects = response.objects
       data.objects = objects
       data.objects.forEach(object => {
         if (object && object.metadata) {
@@ -164,10 +171,18 @@ class App extends Component {
       data
     }) 
   }
+  getLoading() {
+    return <div style={{ width: '100%', textAlign: 'center', paddingTop: 100 }}><Icon color="blue" name="circle notched" loading /></div>
+  }
+  getError() {
+    return <div style={{ width: '100%', textAlign: 'center', padding: 100 }}><Message error>There was an error with this request.  Make sure the Bucket exists and your access connections are correct.</Message></div>
+  }
   render() {
     const data = this.state.data
+    if (data.error)
+      return this.getError()
     if (!data.object_types)
-      return <div>Loading...</div>
+      return this.getLoading()
     return (
       <div style={{ padding: 15 }}>
         <h1>SEO Manager</h1>
@@ -216,7 +231,10 @@ class App extends Component {
             <Modal.Content>
               <Modal.Description>
                 <Header>{ data.current_object.title }</Header>
-                <div dangerouslySetInnerHTML={{ __html: data.current_object.content.replace(new RegExp(data.current_object.metadata.seo_keyword, 'ig'), '<b class="ui green header">' + data.current_object.metadata.seo_keyword + '</b>') }}/>
+                {
+                  data.current_object.metadata && data.current_object.metadata.seo_keyword &&
+                  <div dangerouslySetInnerHTML={{ __html: data.current_object.content.replace(new RegExp(data.current_object.metadata.seo_keyword, 'ig'), '<b class="ui green header">' + data.current_object.metadata.seo_keyword.toUpperCase() + '</b>') }}/>
+                }
               </Modal.Description>
             </Modal.Content>
             <Modal.Actions>
@@ -227,7 +245,7 @@ class App extends Component {
           </Modal>
         }
         { this.getMessage() }
-        <Button onClick={ this.handleSaveClick.bind(this) } primary size='big' disabled={ data.saving ? true : false }>
+        <Button onClick={ this.handleSaveClick.bind(this) } primary disabled={ data.saving ? true : false }>
           { data.saving ? 'Saving...' : 'Save SEO Keywords to Objects' }
         </Button>
       </div>
