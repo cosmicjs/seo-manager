@@ -177,6 +177,15 @@ class App extends Component {
   getError() {
     return <div style={{ width: '100%', textAlign: 'center', padding: 100 }}><Message error>There was an error with this request.  Make sure the Bucket exists and your access connections are correct.</Message></div>
   }
+  getContent() {
+    const data = this.state.data
+    if (data.current_object.metadata && data.current_object.metadata.seo_keyword && data.current_object.content)
+      return <div dangerouslySetInnerHTML={{ __html: data.current_object.content.replace(new RegExp(data.current_object.metadata.seo_keyword, 'ig'), '<b class="ui green header">' + data.current_object.metadata.seo_keyword.toUpperCase() + '</b>') }}/>
+    if (data.current_object.content)
+      return <div dangerouslySetInnerHTML={{ __html: data.current_object.content }}/>
+    else
+      return <Message>This Object has no content.</Message>
+  }
   render() {
     const data = this.state.data
     if (data.error)
@@ -227,14 +236,10 @@ class App extends Component {
         {
           data.current_object &&
           <Modal open={ data.current_object ? true : false } onClose={ this.closeObjectModal.bind(this) }>
-            <Modal.Header>Object Content</Modal.Header>
+            <Modal.Header>{ data.current_object.title }</Modal.Header>
             <Modal.Content>
               <Modal.Description>
-                <Header>{ data.current_object.title }</Header>
-                {
-                  data.current_object.metadata && data.current_object.metadata.seo_keyword &&
-                  <div dangerouslySetInnerHTML={{ __html: data.current_object.content.replace(new RegExp(data.current_object.metadata.seo_keyword, 'ig'), '<b class="ui green header">' + data.current_object.metadata.seo_keyword.toUpperCase() + '</b>') }}/>
-                }
+                { this.getContent() }
               </Modal.Description>
             </Modal.Content>
             <Modal.Actions>
