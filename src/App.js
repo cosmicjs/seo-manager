@@ -10,8 +10,6 @@ class App extends Component {
     this.state = {
       data: {}
     }
-  }
-  componentDidMount() {
     this.getObjects()
   }
   getObjects() {
@@ -172,7 +170,7 @@ class App extends Component {
     }) 
   }
   getLoading() {
-    return <div style={{ width: '100%', textAlign: 'center', paddingTop: 100 }}><Icon color="blue" name="circle notched" loading /></div>
+    return <div style={{ width: '100%', textAlign: 'center', paddingTop: 100 }}><Icon size='huge' color='blue' name='circle notched' loading /></div>
   }
   getError() {
     return <div style={{ width: '100%', textAlign: 'center', padding: 100 }}><Message error>There was an error with this request.  Make sure the Bucket exists and your access connections are correct.</Message></div>
