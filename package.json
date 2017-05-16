@@ -1,7 +1,7 @@
 {
   "cosmic": {
     "title": "SEO Manager",
-    "font_awesome_class": "fa-google"
+    "font_awesome_class": "fa-line-chart"
   },
   "name": "seo-manager-react",
   "version": "0.0.1",

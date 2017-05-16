@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import config from './config'
 import { eachSeries } from 'async'
-import { Table, Input, Message, Icon, Menu, Modal, Header, Button } from 'semantic-ui-react'
+import { Table, Input, Message, Icon, Menu, Modal, Button } from 'semantic-ui-react'
 import _ from 'lodash'
 
 class App extends Component {
