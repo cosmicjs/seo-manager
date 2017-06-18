@@ -127,7 +127,7 @@ class App extends Component {
     delete object.appears_in_content
     if (!keyword)
       return 0
-    if (object.title.toLowerCase().search(keyword.toLowerCase()) !== -1 && object.content.toLowerCase().search(keyword.toLowerCase()) !== -1) {
+    if (object.title.toLowerCase().search(keyword.toLowerCase()) !== -1 && object.content && object.content.toLowerCase().search(keyword.toLowerCase()) !== -1) {
       object.appears_in_title = true
       object.appears_in_content = true
       return 100
@@ -136,7 +136,7 @@ class App extends Component {
       object.appears_in_title = true
       return 50
     }
-    if (object.content.toLowerCase().search(keyword.toLowerCase()) !== -1) {
+    if (object.content && object.content.toLowerCase().search(keyword.toLowerCase()) !== -1) {
       object.appears_in_content = true
       return 50
     }
