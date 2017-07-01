@@ -1,5 +1,5 @@
 # SEO Manager
-![SEO Manager](https://cosmicjs.com/uploads/c0bea880-5465-11e7-8f9b-55e12bd346d8-Screen%20Shot%202017-06-18%20at%203.32.23%20PM.png)
+![SEO Manager](https://cosmicjs.com/uploads/479bbfa0-5e7a-11e7-9efa-1959153891b6-amazon-product-search.jpg)
 A Cosmic JS Extension that can be added to your Bucket for SEO web content management.  Built using [Create React App](https://github.com/facebookincubator/create-react-app).  Easily add SEO keywords to Objects to stay focused on SEO content strategy.
 ## Getting Started
 To add this Extension to your Bucket simply install it from Your Bucket > Extensions > Browse Extensions
