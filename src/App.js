@@ -13,7 +13,7 @@ class App extends Component {
     this.getObjects()
   }
   getObjects() {
-    const endpoint = config.api_url + '/objects'
+    const endpoint = config.api_url + '/objects?read_key=' + config.read_key
     fetch(endpoint).then(response => {
       return response.json()
     }).then(response => {
@@ -54,6 +54,7 @@ class App extends Component {
         return metafield.key !== 'seo_keyword'
       })
       const new_object = {
+        write_key: config.write_key,
         slug: object.slug,
         metafields: [
           ...current_metafields,
